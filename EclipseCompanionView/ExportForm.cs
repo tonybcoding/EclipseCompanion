@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 // right-click on references and click Manage NuGet packages,
 // then selected Browse and searched for Excel
@@ -170,7 +171,14 @@ namespace EclipseCompanionView
                 //////////////////////////////////////////////////
                 void CreateAdditionalSheets()
                 {
-
+                    string sinceDateString = sinceDate.ToShortDateString();
+                    StringBuilder sb = new StringBuilder();
+                    foreach (char c in sinceDateString)
+                    {
+                        sb.Append(c == '/' ? '-' : c);
+                    }
+                    sinceDateString = sb.ToString();
+                    
                     // hide reference only cells
                     ws = xlWorkbook.Sheets[GlobalCode.ExportSheets[0]];
                     foreach (ColumnModel c in fldCols)
@@ -240,7 +248,7 @@ namespace EclipseCompanionView
                     void AddRowCountToSheet()
                     {
                         double rowCount = xlApp.WorksheetFunction.Subtotal(3, ws.UsedRange.Columns[1]) - 1; // remove header row
-                        ws.Name += $"-{rowCount}";
+                        ws.Name += (ws.Name == GlobalCode.ExportSheets[3] || ws.Name == GlobalCode.ExportSheets[4]) ? $" {sinceDateString} | {rowCount}" : ws.Name += $" | {rowCount}";
                     }
                     
                     void HideIfNeeded(ColumnModel cM)
