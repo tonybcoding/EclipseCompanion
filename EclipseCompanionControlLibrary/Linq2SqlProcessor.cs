@@ -176,6 +176,87 @@ namespace EclipseCompanionControlLibrary
             }
         }
 
+        public static void ChangePassword(int id, string password)
+        {
+            try
+            {
+                SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
+                User uSql = dbContext.Users.SingleOrDefault(u => u.id == id);
+                uSql.Password = password;
+                uSql.LastUpdated = DateTime.Now;
+                dbContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                GlobalCode.ExceptionHandler(ex);
+            }
+        }
+
+
+        public static void AddUpdateUser(UserModel user, SqlAction action, string password = "")
+        {
+            try
+            {
+                SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
+                User uSql = (action == SqlAction.Add) ? new User() : uSql = dbContext.Users.SingleOrDefault(u => u.id == user.Id);
+
+                uSql.FirstName = user.FirstName;
+                uSql.LastName = user.LastName;
+                uSql.LoginId = user.UserLoginName;
+                uSql.EmailAddress = user.EmailAddress;
+                uSql.AccessLevel = (int)user.AccessLevel;
+                uSql.Active = user.IsActive;
+                uSql.Locked = user.IsLocked;
+                uSql.ForcePasswordChange = user.ForcePasswordChange;
+                uSql.LastUpdated = DateTime.Now;
+                if(action == SqlAction.Add)
+                {
+                    uSql.CreateDate = DateTime.Now;
+                    uSql.Password = password;
+                    dbContext.Users.InsertOnSubmit(uSql);
+                }
+                dbContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                GlobalCode.ExceptionHandler(ex);
+            }
+        }
+        
+        public static List<UserModel> RetrieveUsers()
+        {
+            try
+            {
+                SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
+                List<UserModel> users = new List<UserModel>();
+
+                // load all users from SQL
+                var userList = dbContext.Users.OrderBy(u => u.LastName).ThenBy(u => u.FirstName).ToList();
+                foreach(User user in userList)
+                {
+                    UserModel u = new UserModel();
+                    u.Id = user.id;
+                    u.FirstName = user.FirstName;
+                    u.LastName = user.LastName;
+                    u.UserLoginName = user.LoginId;
+                    u.AccessLevel = (AccessLevels)user.AccessLevel;
+                    u.IsActive = user.Active;
+                    u.IsLocked = user.Locked;
+                    u.EmailAddress = user.EmailAddress;
+                    u.LastLogin = user.LastLogIn;
+                    u.ForcePasswordChange = user.ForcePasswordChange;
+                    users.Add(u);
+                }
+
+                return users;
+            }
+            catch (Exception ex)
+            {
+                GlobalCode.ExceptionHandler(ex);
+                return null;
+            }
+        }
+        
         public static List<ProjectTaskModel> RetrieveProjectsTasks()
         {
             try

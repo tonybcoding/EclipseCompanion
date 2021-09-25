@@ -37,9 +37,10 @@ namespace EclipseCompanionView
             this.projectsFromMostRecentRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectsToResourceTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshDBWithAPICallsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configureExportViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generalConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectLabel = new System.Windows.Forms.Label();
             this.addTaskLabel = new System.Windows.Forms.Label();
             this.projectComboBox = new System.Windows.Forms.ComboBox();
@@ -47,7 +48,7 @@ namespace EclipseCompanionView
             this.logButton = new System.Windows.Forms.Button();
             this.workingOnGroupBox = new System.Windows.Forms.GroupBox();
             this.addNewTaskButton = new System.Windows.Forms.Button();
-            this.generalConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.launchMenuStrip.SuspendLayout();
             this.workingOnGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +68,7 @@ namespace EclipseCompanionView
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -75,7 +77,7 @@ namespace EclipseCompanionView
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -114,12 +116,6 @@ namespace EclipseCompanionView
             this.administrativeToolStripMenuItem.Text = "Administrative";
             this.administrativeToolStripMenuItem.Visible = false;
             // 
-            // userManagementToolStripMenuItem
-            // 
-            this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            this.userManagementToolStripMenuItem.Text = "User Management";
-            // 
             // refreshDBWithAPICallsToolStripMenuItem
             // 
             this.refreshDBWithAPICallsToolStripMenuItem.Name = "refreshDBWithAPICallsToolStripMenuItem";
@@ -133,6 +129,20 @@ namespace EclipseCompanionView
             this.configureExportViewerToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.configureExportViewerToolStripMenuItem.Text = "Configure Export/Viewer";
             this.configureExportViewerToolStripMenuItem.Click += new System.EventHandler(this.configureExportViewerToolStripMenuItem_Click);
+            // 
+            // generalConfigurationToolStripMenuItem
+            // 
+            this.generalConfigurationToolStripMenuItem.Name = "generalConfigurationToolStripMenuItem";
+            this.generalConfigurationToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            this.generalConfigurationToolStripMenuItem.Text = "General Configuration";
+            this.generalConfigurationToolStripMenuItem.Click += new System.EventHandler(this.generalConfigurationToolStripMenuItem_Click);
+            // 
+            // userManagementToolStripMenuItem
+            // 
+            this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            this.userManagementToolStripMenuItem.Text = "User Management";
+            this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
             // projectLabel
             // 
@@ -206,12 +216,12 @@ namespace EclipseCompanionView
             this.addNewTaskButton.UseVisualStyleBackColor = true;
             this.addNewTaskButton.Click += new System.EventHandler(this.addNewTaskButton_Click);
             // 
-            // generalConfigurationToolStripMenuItem
+            // changePasswordToolStripMenuItem
             // 
-            this.generalConfigurationToolStripMenuItem.Name = "generalConfigurationToolStripMenuItem";
-            this.generalConfigurationToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            this.generalConfigurationToolStripMenuItem.Text = "General Configuration";
-            this.generalConfigurationToolStripMenuItem.Click += new System.EventHandler(this.generalConfigurationToolStripMenuItem_Click);
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // LaunchForm
             // 
@@ -260,6 +270,7 @@ namespace EclipseCompanionView
         private System.Windows.Forms.ToolStripMenuItem configureExportViewerToolStripMenuItem;
         private System.Windows.Forms.Button addNewTaskButton;
         private System.Windows.Forms.ToolStripMenuItem generalConfigurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }
 

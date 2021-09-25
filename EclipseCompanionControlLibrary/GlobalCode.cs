@@ -45,6 +45,7 @@ namespace EclipseCompanionControlLibrary
         public const string ModifiedField = "ModifiedDate";
         public const string FullNotesField = "FullStatusNotes";
         public const string StatusTypeIdField = "StatusTypeId";
+        public const string DefaultPassword = "pass";
         public static string[] ExportSheets = new string[]
         {
             "All Projects",

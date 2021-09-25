@@ -19,7 +19,7 @@ namespace EclipseCompanionControlLibrary
             try
             {
                 SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
-                var user = dbContext.Users.SingleOrDefault(u => u.EmailAddress == mainUser && u.Password == mainPassword);
+                var user = dbContext.Users.SingleOrDefault(u => u.LoginId == mainUser && u.Password == mainPassword);
                 if (user == null)
                 {
                     MessageBox.Show($"Wrong username or password entered. Please try again.",
@@ -32,7 +32,7 @@ namespace EclipseCompanionControlLibrary
                 {
                     GlobalCode.MainLogin.AccessLevel = (AccessLevels)user.AccessLevel;
                     GlobalCode.MainLogin.Id = user.id;
-                    GlobalCode.MainLogin.UserName = user.EmailAddress;
+                    GlobalCode.MainLogin.UserLoginName = user.EmailAddress;
                     GlobalCode.MainLogin.FirstName = user.FirstName;
                     GlobalCode.MainLogin.LastName = user.LastName;
                     // set last login column in sql table to now

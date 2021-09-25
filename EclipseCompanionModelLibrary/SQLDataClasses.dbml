@@ -22,8 +22,8 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Association Name="Task_ProjectTaskResourceLog" Member="Task" ThisKey="TaskId" OtherKey="id" Type="Task" IsForeignKey="true" />
-      <Association Name="User_ProjectTaskResourceLog" Member="User" ThisKey="UserId" OtherKey="id" Type="User" IsForeignKey="true" />
       <Association Name="Project_ProjectTaskResourceLog" Member="Project" ThisKey="ProjId" OtherKey="id" Type="Project" IsForeignKey="true" />
+      <Association Name="User_ProjectTaskResourceLog" Member="User" ThisKey="UserId" OtherKey="id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tasks" Member="Tasks">
@@ -36,24 +36,6 @@
       <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Association Name="Task_ProjectTaskResourceLog" Member="ProjectTaskResourceLogs" ThisKey="id" OtherKey="TaskId" Type="ProjectTaskResourceLog" />
       <Association Name="User_Task" Member="User" ThisKey="UserCreatedId" OtherKey="id" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="AccessLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="LastLogIn" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
-      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Locked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ForcePasswordChange" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Association Name="User_ProjectTaskResourceLog" Member="ProjectTaskResourceLogs" ThisKey="id" OtherKey="UserId" Type="ProjectTaskResourceLog" />
-      <Association Name="User_Task" Member="Tasks" ThisKey="id" OtherKey="UserCreatedId" Type="Task" />
     </Type>
   </Table>
   <Table Name="dbo.ConfigurationFields" Member="ConfigurationFields">
@@ -115,6 +97,25 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Association Name="Project_ProjectTaskResourceLog" Member="ProjectTaskResourceLogs" ThisKey="id" OtherKey="ProjId" Type="ProjectTaskResourceLog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LoginId" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccessLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLogIn" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Locked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ForcePasswordChange" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Association Name="User_ProjectTaskResourceLog" Member="ProjectTaskResourceLogs" ThisKey="id" OtherKey="UserId" Type="ProjectTaskResourceLog" />
+      <Association Name="User_Task" Member="Tasks" ThisKey="id" OtherKey="UserCreatedId" Type="Task" />
     </Type>
   </Table>
 </Database>

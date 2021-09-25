@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SQLDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

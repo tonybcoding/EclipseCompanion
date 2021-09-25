@@ -131,6 +131,12 @@
     <Compile Include="RefreshProjectsTableWithAPIsForm.Designer.cs">
       <DependentUpon>RefreshProjectsTableWithAPIsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagerForm.Designer.cs">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ExportForm.resx">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="RefreshProjectsTableWithAPIsForm.resx">
       <DependentUpon>RefreshProjectsTableWithAPIsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagerForm.resx">
+      <DependentUpon>UserManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="EclipseCompanionView_TemporaryKey.pfx" />
     <None Include="packages.config" />

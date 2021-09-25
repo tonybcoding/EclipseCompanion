@@ -228,5 +228,20 @@ namespace EclipseCompanionView
             GeneralConfigForm gform = new GeneralConfigForm();
             gform.ShowDialog();
         }
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserManagerForm uform = new UserManagerForm();
+            uform.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: wire this up so users can change password
+            // old password, then new twice
+            // ensure new and confirm new is same
+            // ensure old password is correct
+            // invoke Linq2Sql.UpdatePassword method
+        }
     }
 }
