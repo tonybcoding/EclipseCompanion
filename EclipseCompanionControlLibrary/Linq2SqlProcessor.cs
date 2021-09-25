@@ -176,6 +176,21 @@ namespace EclipseCompanionControlLibrary
             }
         }
 
+        public static string RetrievePassword(int id)
+        {
+            try
+            {
+                SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
+                User uSql = dbContext.Users.SingleOrDefault(u => u.id == id);
+                return uSql.Password;
+            }
+            catch (Exception ex)
+            {
+                GlobalCode.ExceptionHandler(ex);
+                return null;
+            }
+        }
+        
         public static void ChangePassword(int id, string password)
         {
             try
@@ -191,7 +206,6 @@ namespace EclipseCompanionControlLibrary
                 GlobalCode.ExceptionHandler(ex);
             }
         }
-
 
         public static void AddUpdateUser(UserModel user, SqlAction action, string password = "")
         {

@@ -237,11 +237,8 @@ namespace EclipseCompanionView
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: wire this up so users can change password
-            // old password, then new twice
-            // ensure new and confirm new is same
-            // ensure old password is correct
-            // invoke Linq2Sql.UpdatePassword method
+            ChangePasswordForm cform = new ChangePasswordForm(GlobalCode.MainLogin.Id);
+            cform.ShowDialog();
         }
     }
 }
