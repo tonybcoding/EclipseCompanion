@@ -160,7 +160,7 @@ namespace EclipseCompanionView
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            if(firstNameValue.Text == "" || lastNameValue.Text == "" || loginIdValue.Text == "" || emailAddressValue.Text == "" || accessLevelComboBox.SelectedIndex <= 0)
+            if(firstNameValue.Text == "" || lastNameValue.Text == "" || loginIdValue.Text == "" || emailAddressValue.Text == "" || accessLevelComboBox.SelectedIndex < 0)
             {
                 MessageBox.Show("First Name, Last Name, User Login ID, Email Address, and Access Level cannot be blank. Please check your entries.",
                     "Incomplete Data");

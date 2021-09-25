@@ -21,8 +21,12 @@ namespace EclipseCompanionView
             if (LogInToWhat == LoginTo.Eclipse)
             {
                 this.Text = "Log in to Eclipse";
-                eclipseUserNameLabel.Text = "Eclipse User Name :";
+                eclipseUserNameLabel.Text = "Eclipse Email :";
                 eclipsePasswordLabel.Text = "Eclipse Password :";
+
+                // TODO: look up GlobalCode.MainUsers Id to get email address and
+                // pre-populate userNameValue
+
             }
             else if (LogInToWhat == LoginTo.Main)
             {
