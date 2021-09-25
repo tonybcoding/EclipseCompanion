@@ -30,24 +30,24 @@ namespace EclipseCompanionModelLibrary
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertProjectIndicator(ProjectIndicator instance);
-    partial void UpdateProjectIndicator(ProjectIndicator instance);
-    partial void DeleteProjectIndicator(ProjectIndicator instance);
-    partial void InsertProjectTaskResourceLog(ProjectTaskResourceLog instance);
-    partial void UpdateProjectTaskResourceLog(ProjectTaskResourceLog instance);
-    partial void DeleteProjectTaskResourceLog(ProjectTaskResourceLog instance);
-    partial void InsertTask(Task instance);
-    partial void UpdateTask(Task instance);
-    partial void DeleteTask(Task instance);
     partial void InsertConfigurationField(ConfigurationField instance);
     partial void UpdateConfigurationField(ConfigurationField instance);
     partial void DeleteConfigurationField(ConfigurationField instance);
     partial void InsertGeneralConfiguration(GeneralConfiguration instance);
     partial void UpdateGeneralConfiguration(GeneralConfiguration instance);
     partial void DeleteGeneralConfiguration(GeneralConfiguration instance);
+    partial void InsertProjectIndicator(ProjectIndicator instance);
+    partial void UpdateProjectIndicator(ProjectIndicator instance);
+    partial void DeleteProjectIndicator(ProjectIndicator instance);
     partial void InsertProject(Project instance);
     partial void UpdateProject(Project instance);
     partial void DeleteProject(Project instance);
+    partial void InsertProjectTaskResourceLog(ProjectTaskResourceLog instance);
+    partial void UpdateProjectTaskResourceLog(ProjectTaskResourceLog instance);
+    partial void DeleteProjectTaskResourceLog(ProjectTaskResourceLog instance);
+    partial void InsertTask(Task instance);
+    partial void UpdateTask(Task instance);
+    partial void DeleteTask(Task instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
@@ -83,11 +83,35 @@ namespace EclipseCompanionModelLibrary
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<ConfigurationField> ConfigurationFields
+		{
+			get
+			{
+				return this.GetTable<ConfigurationField>();
+			}
+		}
+		
+		public System.Data.Linq.Table<GeneralConfiguration> GeneralConfigurations
+		{
+			get
+			{
+				return this.GetTable<GeneralConfiguration>();
+			}
+		}
+		
 		public System.Data.Linq.Table<ProjectIndicator> ProjectIndicators
 		{
 			get
 			{
 				return this.GetTable<ProjectIndicator>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Project> Projects
+		{
+			get
+			{
+				return this.GetTable<Project>();
 			}
 		}
 		
@@ -107,846 +131,12 @@ namespace EclipseCompanionModelLibrary
 			}
 		}
 		
-		public System.Data.Linq.Table<ConfigurationField> ConfigurationFields
-		{
-			get
-			{
-				return this.GetTable<ConfigurationField>();
-			}
-		}
-		
-		public System.Data.Linq.Table<GeneralConfiguration> GeneralConfigurations
-		{
-			get
-			{
-				return this.GetTable<GeneralConfiguration>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Project> Projects
-		{
-			get
-			{
-				return this.GetTable<Project>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
 				return this.GetTable<User>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProjectIndicators")]
-	public partial class ProjectIndicator : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _ProjectEclipseId;
-		
-		private string _Name;
-		
-		private int _StateId;
-		
-		private string _StateName;
-		
-		private System.DateTime _CreateDate;
-		
-		private System.DateTime _LastUpdated;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnProjectEclipseIdChanging(int value);
-    partial void OnProjectEclipseIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnStateIdChanging(int value);
-    partial void OnStateIdChanged();
-    partial void OnStateNameChanging(string value);
-    partial void OnStateNameChanged();
-    partial void OnCreateDateChanging(System.DateTime value);
-    partial void OnCreateDateChanged();
-    partial void OnLastUpdatedChanging(System.DateTime value);
-    partial void OnLastUpdatedChanged();
-    #endregion
-		
-		public ProjectIndicator()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectEclipseId", DbType="Int NOT NULL")]
-		public int ProjectEclipseId
-		{
-			get
-			{
-				return this._ProjectEclipseId;
-			}
-			set
-			{
-				if ((this._ProjectEclipseId != value))
-				{
-					this.OnProjectEclipseIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectEclipseId = value;
-					this.SendPropertyChanged("ProjectEclipseId");
-					this.OnProjectEclipseIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateId", DbType="Int NOT NULL")]
-		public int StateId
-		{
-			get
-			{
-				return this._StateId;
-			}
-			set
-			{
-				if ((this._StateId != value))
-				{
-					this.OnStateIdChanging(value);
-					this.SendPropertyChanging();
-					this._StateId = value;
-					this.SendPropertyChanged("StateId");
-					this.OnStateIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string StateName
-		{
-			get
-			{
-				return this._StateName;
-			}
-			set
-			{
-				if ((this._StateName != value))
-				{
-					this.OnStateNameChanging(value);
-					this.SendPropertyChanging();
-					this._StateName = value;
-					this.SendPropertyChanged("StateName");
-					this.OnStateNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime2 NOT NULL")]
-		public System.DateTime CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime LastUpdated
-		{
-			get
-			{
-				return this._LastUpdated;
-			}
-			set
-			{
-				if ((this._LastUpdated != value))
-				{
-					this.OnLastUpdatedChanging(value);
-					this.SendPropertyChanging();
-					this._LastUpdated = value;
-					this.SendPropertyChanged("LastUpdated");
-					this.OnLastUpdatedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProjectTaskResourceLog")]
-	public partial class ProjectTaskResourceLog : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _ProjId;
-		
-		private int _TaskId;
-		
-		private int _UserId;
-		
-		private System.DateTime _StartDateTime;
-		
-		private System.DateTime _EndDateTime;
-		
-		private System.DateTime _CreateDate;
-		
-		private System.DateTime _LastUpdated;
-		
-		private EntityRef<Task> _Task;
-		
-		private EntityRef<Project> _Project;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnProjIdChanging(int value);
-    partial void OnProjIdChanged();
-    partial void OnTaskIdChanging(int value);
-    partial void OnTaskIdChanged();
-    partial void OnUserIdChanging(int value);
-    partial void OnUserIdChanged();
-    partial void OnStartDateTimeChanging(System.DateTime value);
-    partial void OnStartDateTimeChanged();
-    partial void OnEndDateTimeChanging(System.DateTime value);
-    partial void OnEndDateTimeChanged();
-    partial void OnCreateDateChanging(System.DateTime value);
-    partial void OnCreateDateChanged();
-    partial void OnLastUpdatedChanging(System.DateTime value);
-    partial void OnLastUpdatedChanged();
-    #endregion
-		
-		public ProjectTaskResourceLog()
-		{
-			this._Task = default(EntityRef<Task>);
-			this._Project = default(EntityRef<Project>);
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjId", DbType="Int NOT NULL")]
-		public int ProjId
-		{
-			get
-			{
-				return this._ProjId;
-			}
-			set
-			{
-				if ((this._ProjId != value))
-				{
-					if (this._Project.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProjId = value;
-					this.SendPropertyChanged("ProjId");
-					this.OnProjIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskId", DbType="Int NOT NULL")]
-		public int TaskId
-		{
-			get
-			{
-				return this._TaskId;
-			}
-			set
-			{
-				if ((this._TaskId != value))
-				{
-					if (this._Task.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTaskIdChanging(value);
-					this.SendPropertyChanging();
-					this._TaskId = value;
-					this.SendPropertyChanged("TaskId");
-					this.OnTaskIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDateTime", DbType="DateTime2 NOT NULL")]
-		public System.DateTime StartDateTime
-		{
-			get
-			{
-				return this._StartDateTime;
-			}
-			set
-			{
-				if ((this._StartDateTime != value))
-				{
-					this.OnStartDateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._StartDateTime = value;
-					this.SendPropertyChanged("StartDateTime");
-					this.OnStartDateTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDateTime", DbType="DateTime2 NOT NULL")]
-		public System.DateTime EndDateTime
-		{
-			get
-			{
-				return this._EndDateTime;
-			}
-			set
-			{
-				if ((this._EndDateTime != value))
-				{
-					this.OnEndDateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._EndDateTime = value;
-					this.SendPropertyChanged("EndDateTime");
-					this.OnEndDateTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime2 NOT NULL")]
-		public System.DateTime CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime LastUpdated
-		{
-			get
-			{
-				return this._LastUpdated;
-			}
-			set
-			{
-				if ((this._LastUpdated != value))
-				{
-					this.OnLastUpdatedChanging(value);
-					this.SendPropertyChanging();
-					this._LastUpdated = value;
-					this.SendPropertyChanged("LastUpdated");
-					this.OnLastUpdatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Task_ProjectTaskResourceLog", Storage="_Task", ThisKey="TaskId", OtherKey="id", IsForeignKey=true)]
-		public Task Task
-		{
-			get
-			{
-				return this._Task.Entity;
-			}
-			set
-			{
-				Task previousValue = this._Task.Entity;
-				if (((previousValue != value) 
-							|| (this._Task.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Task.Entity = null;
-						previousValue.ProjectTaskResourceLogs.Remove(this);
-					}
-					this._Task.Entity = value;
-					if ((value != null))
-					{
-						value.ProjectTaskResourceLogs.Add(this);
-						this._TaskId = value.id;
-					}
-					else
-					{
-						this._TaskId = default(int);
-					}
-					this.SendPropertyChanged("Task");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Project_ProjectTaskResourceLog", Storage="_Project", ThisKey="ProjId", OtherKey="id", IsForeignKey=true)]
-		public Project Project
-		{
-			get
-			{
-				return this._Project.Entity;
-			}
-			set
-			{
-				Project previousValue = this._Project.Entity;
-				if (((previousValue != value) 
-							|| (this._Project.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Project.Entity = null;
-						previousValue.ProjectTaskResourceLogs.Remove(this);
-					}
-					this._Project.Entity = value;
-					if ((value != null))
-					{
-						value.ProjectTaskResourceLogs.Add(this);
-						this._ProjId = value.id;
-					}
-					else
-					{
-						this._ProjId = default(int);
-					}
-					this.SendPropertyChanged("Project");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_ProjectTaskResourceLog", Storage="_User", ThisKey="UserId", OtherKey="id", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.ProjectTaskResourceLogs.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.ProjectTaskResourceLogs.Add(this);
-						this._UserId = value.id;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tasks")]
-	public partial class Task : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _TaskName;
-		
-		private int _UserCreatedId;
-		
-		private bool _IsActive;
-		
-		private System.DateTime _CreateDate;
-		
-		private System.DateTime _LastUpdated;
-		
-		private EntitySet<ProjectTaskResourceLog> _ProjectTaskResourceLogs;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnTaskNameChanging(string value);
-    partial void OnTaskNameChanged();
-    partial void OnUserCreatedIdChanging(int value);
-    partial void OnUserCreatedIdChanged();
-    partial void OnIsActiveChanging(bool value);
-    partial void OnIsActiveChanged();
-    partial void OnCreateDateChanging(System.DateTime value);
-    partial void OnCreateDateChanged();
-    partial void OnLastUpdatedChanging(System.DateTime value);
-    partial void OnLastUpdatedChanged();
-    #endregion
-		
-		public Task()
-		{
-			this._ProjectTaskResourceLogs = new EntitySet<ProjectTaskResourceLog>(new Action<ProjectTaskResourceLog>(this.attach_ProjectTaskResourceLogs), new Action<ProjectTaskResourceLog>(this.detach_ProjectTaskResourceLogs));
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string TaskName
-		{
-			get
-			{
-				return this._TaskName;
-			}
-			set
-			{
-				if ((this._TaskName != value))
-				{
-					this.OnTaskNameChanging(value);
-					this.SendPropertyChanging();
-					this._TaskName = value;
-					this.SendPropertyChanged("TaskName");
-					this.OnTaskNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCreatedId", DbType="Int NOT NULL")]
-		public int UserCreatedId
-		{
-			get
-			{
-				return this._UserCreatedId;
-			}
-			set
-			{
-				if ((this._UserCreatedId != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserCreatedIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserCreatedId = value;
-					this.SendPropertyChanged("UserCreatedId");
-					this.OnUserCreatedIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
-		public bool IsActive
-		{
-			get
-			{
-				return this._IsActive;
-			}
-			set
-			{
-				if ((this._IsActive != value))
-				{
-					this.OnIsActiveChanging(value);
-					this.SendPropertyChanging();
-					this._IsActive = value;
-					this.SendPropertyChanged("IsActive");
-					this.OnIsActiveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime2 NOT NULL")]
-		public System.DateTime CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdated", DbType="DateTime2 NOT NULL")]
-		public System.DateTime LastUpdated
-		{
-			get
-			{
-				return this._LastUpdated;
-			}
-			set
-			{
-				if ((this._LastUpdated != value))
-				{
-					this.OnLastUpdatedChanging(value);
-					this.SendPropertyChanging();
-					this._LastUpdated = value;
-					this.SendPropertyChanged("LastUpdated");
-					this.OnLastUpdatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Task_ProjectTaskResourceLog", Storage="_ProjectTaskResourceLogs", ThisKey="id", OtherKey="TaskId")]
-		public EntitySet<ProjectTaskResourceLog> ProjectTaskResourceLogs
-		{
-			get
-			{
-				return this._ProjectTaskResourceLogs;
-			}
-			set
-			{
-				this._ProjectTaskResourceLogs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Task", Storage="_User", ThisKey="UserCreatedId", OtherKey="id", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Tasks.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Tasks.Add(this);
-						this._UserCreatedId = value.id;
-					}
-					else
-					{
-						this._UserCreatedId = default(int);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ProjectTaskResourceLogs(ProjectTaskResourceLog entity)
-		{
-			this.SendPropertyChanging();
-			entity.Task = this;
-		}
-		
-		private void detach_ProjectTaskResourceLogs(ProjectTaskResourceLog entity)
-		{
-			this.SendPropertyChanging();
-			entity.Task = null;
 		}
 	}
 	
@@ -1164,6 +354,8 @@ namespace EclipseCompanionModelLibrary
 		
 		private int _id;
 		
+		private bool _FirstRun;
+		
 		private System.DateTime _LastAPIRefresh;
 		
 		private int _LastUpdatedByUserId;
@@ -1202,6 +394,8 @@ namespace EclipseCompanionModelLibrary
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
+    partial void OnFirstRunChanging(bool value);
+    partial void OnFirstRunChanged();
     partial void OnLastAPIRefreshChanging(System.DateTime value);
     partial void OnLastAPIRefreshChanged();
     partial void OnLastUpdatedByUserIdChanging(int value);
@@ -1257,6 +451,26 @@ namespace EclipseCompanionModelLibrary
 					this._id = value;
 					this.SendPropertyChanged("id");
 					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstRun", DbType="Bit NOT NULL")]
+		public bool FirstRun
+		{
+			get
+			{
+				return this._FirstRun;
+			}
+			set
+			{
+				if ((this._FirstRun != value))
+				{
+					this.OnFirstRunChanging(value);
+					this.SendPropertyChanging();
+					this._FirstRun = value;
+					this.SendPropertyChanged("FirstRun");
+					this.OnFirstRunChanged();
 				}
 			}
 		}
@@ -1577,6 +791,212 @@ namespace EclipseCompanionModelLibrary
 					this._OverallRed = value;
 					this.SendPropertyChanged("OverallRed");
 					this.OnOverallRedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProjectIndicators")]
+	public partial class ProjectIndicator : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _ProjectEclipseId;
+		
+		private string _Name;
+		
+		private int _StateId;
+		
+		private string _StateName;
+		
+		private System.DateTime _CreateDate;
+		
+		private System.DateTime _LastUpdated;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnProjectEclipseIdChanging(int value);
+    partial void OnProjectEclipseIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnStateIdChanging(int value);
+    partial void OnStateIdChanged();
+    partial void OnStateNameChanging(string value);
+    partial void OnStateNameChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnLastUpdatedChanging(System.DateTime value);
+    partial void OnLastUpdatedChanged();
+    #endregion
+		
+		public ProjectIndicator()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectEclipseId", DbType="Int NOT NULL")]
+		public int ProjectEclipseId
+		{
+			get
+			{
+				return this._ProjectEclipseId;
+			}
+			set
+			{
+				if ((this._ProjectEclipseId != value))
+				{
+					this.OnProjectEclipseIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectEclipseId = value;
+					this.SendPropertyChanged("ProjectEclipseId");
+					this.OnProjectEclipseIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateId", DbType="Int NOT NULL")]
+		public int StateId
+		{
+			get
+			{
+				return this._StateId;
+			}
+			set
+			{
+				if ((this._StateId != value))
+				{
+					this.OnStateIdChanging(value);
+					this.SendPropertyChanging();
+					this._StateId = value;
+					this.SendPropertyChanged("StateId");
+					this.OnStateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string StateName
+		{
+			get
+			{
+				return this._StateName;
+			}
+			set
+			{
+				if ((this._StateName != value))
+				{
+					this.OnStateNameChanging(value);
+					this.SendPropertyChanging();
+					this._StateName = value;
+					this.SendPropertyChanged("StateName");
+					this.OnStateNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime2 NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime LastUpdated
+		{
+			get
+			{
+				return this._LastUpdated;
+			}
+			set
+			{
+				if ((this._LastUpdated != value))
+				{
+					this.OnLastUpdatedChanging(value);
+					this.SendPropertyChanging();
+					this._LastUpdated = value;
+					this.SendPropertyChanged("LastUpdated");
+					this.OnLastUpdatedChanged();
 				}
 			}
 		}
@@ -2244,6 +1664,610 @@ namespace EclipseCompanionModelLibrary
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProjectTaskResourceLog")]
+	public partial class ProjectTaskResourceLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _ProjId;
+		
+		private int _TaskId;
+		
+		private int _UserId;
+		
+		private System.DateTime _StartDateTime;
+		
+		private System.DateTime _EndDateTime;
+		
+		private System.DateTime _CreateDate;
+		
+		private System.DateTime _LastUpdated;
+		
+		private EntityRef<Project> _Project;
+		
+		private EntityRef<Task> _Task;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnProjIdChanging(int value);
+    partial void OnProjIdChanged();
+    partial void OnTaskIdChanging(int value);
+    partial void OnTaskIdChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnStartDateTimeChanging(System.DateTime value);
+    partial void OnStartDateTimeChanged();
+    partial void OnEndDateTimeChanging(System.DateTime value);
+    partial void OnEndDateTimeChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnLastUpdatedChanging(System.DateTime value);
+    partial void OnLastUpdatedChanged();
+    #endregion
+		
+		public ProjectTaskResourceLog()
+		{
+			this._Project = default(EntityRef<Project>);
+			this._Task = default(EntityRef<Task>);
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjId", DbType="Int NOT NULL")]
+		public int ProjId
+		{
+			get
+			{
+				return this._ProjId;
+			}
+			set
+			{
+				if ((this._ProjId != value))
+				{
+					if (this._Project.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProjId = value;
+					this.SendPropertyChanged("ProjId");
+					this.OnProjIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskId", DbType="Int NOT NULL")]
+		public int TaskId
+		{
+			get
+			{
+				return this._TaskId;
+			}
+			set
+			{
+				if ((this._TaskId != value))
+				{
+					if (this._Task.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTaskIdChanging(value);
+					this.SendPropertyChanging();
+					this._TaskId = value;
+					this.SendPropertyChanged("TaskId");
+					this.OnTaskIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDateTime", DbType="DateTime2 NOT NULL")]
+		public System.DateTime StartDateTime
+		{
+			get
+			{
+				return this._StartDateTime;
+			}
+			set
+			{
+				if ((this._StartDateTime != value))
+				{
+					this.OnStartDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._StartDateTime = value;
+					this.SendPropertyChanged("StartDateTime");
+					this.OnStartDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDateTime", DbType="DateTime2 NOT NULL")]
+		public System.DateTime EndDateTime
+		{
+			get
+			{
+				return this._EndDateTime;
+			}
+			set
+			{
+				if ((this._EndDateTime != value))
+				{
+					this.OnEndDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._EndDateTime = value;
+					this.SendPropertyChanged("EndDateTime");
+					this.OnEndDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime2 NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime LastUpdated
+		{
+			get
+			{
+				return this._LastUpdated;
+			}
+			set
+			{
+				if ((this._LastUpdated != value))
+				{
+					this.OnLastUpdatedChanging(value);
+					this.SendPropertyChanging();
+					this._LastUpdated = value;
+					this.SendPropertyChanged("LastUpdated");
+					this.OnLastUpdatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Project_ProjectTaskResourceLog", Storage="_Project", ThisKey="ProjId", OtherKey="id", IsForeignKey=true)]
+		public Project Project
+		{
+			get
+			{
+				return this._Project.Entity;
+			}
+			set
+			{
+				Project previousValue = this._Project.Entity;
+				if (((previousValue != value) 
+							|| (this._Project.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Project.Entity = null;
+						previousValue.ProjectTaskResourceLogs.Remove(this);
+					}
+					this._Project.Entity = value;
+					if ((value != null))
+					{
+						value.ProjectTaskResourceLogs.Add(this);
+						this._ProjId = value.id;
+					}
+					else
+					{
+						this._ProjId = default(int);
+					}
+					this.SendPropertyChanged("Project");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Task_ProjectTaskResourceLog", Storage="_Task", ThisKey="TaskId", OtherKey="id", IsForeignKey=true)]
+		public Task Task
+		{
+			get
+			{
+				return this._Task.Entity;
+			}
+			set
+			{
+				Task previousValue = this._Task.Entity;
+				if (((previousValue != value) 
+							|| (this._Task.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Task.Entity = null;
+						previousValue.ProjectTaskResourceLogs.Remove(this);
+					}
+					this._Task.Entity = value;
+					if ((value != null))
+					{
+						value.ProjectTaskResourceLogs.Add(this);
+						this._TaskId = value.id;
+					}
+					else
+					{
+						this._TaskId = default(int);
+					}
+					this.SendPropertyChanged("Task");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_ProjectTaskResourceLog", Storage="_User", ThisKey="UserId", OtherKey="id", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.ProjectTaskResourceLogs.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.ProjectTaskResourceLogs.Add(this);
+						this._UserId = value.id;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tasks")]
+	public partial class Task : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _TaskName;
+		
+		private int _UserCreatedId;
+		
+		private bool _IsActive;
+		
+		private System.DateTime _CreateDate;
+		
+		private System.DateTime _LastUpdated;
+		
+		private EntitySet<ProjectTaskResourceLog> _ProjectTaskResourceLogs;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnTaskNameChanging(string value);
+    partial void OnTaskNameChanged();
+    partial void OnUserCreatedIdChanging(int value);
+    partial void OnUserCreatedIdChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnLastUpdatedChanging(System.DateTime value);
+    partial void OnLastUpdatedChanged();
+    #endregion
+		
+		public Task()
+		{
+			this._ProjectTaskResourceLogs = new EntitySet<ProjectTaskResourceLog>(new Action<ProjectTaskResourceLog>(this.attach_ProjectTaskResourceLogs), new Action<ProjectTaskResourceLog>(this.detach_ProjectTaskResourceLogs));
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string TaskName
+		{
+			get
+			{
+				return this._TaskName;
+			}
+			set
+			{
+				if ((this._TaskName != value))
+				{
+					this.OnTaskNameChanging(value);
+					this.SendPropertyChanging();
+					this._TaskName = value;
+					this.SendPropertyChanged("TaskName");
+					this.OnTaskNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCreatedId", DbType="Int NOT NULL")]
+		public int UserCreatedId
+		{
+			get
+			{
+				return this._UserCreatedId;
+			}
+			set
+			{
+				if ((this._UserCreatedId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserCreatedIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserCreatedId = value;
+					this.SendPropertyChanged("UserCreatedId");
+					this.OnUserCreatedIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime2 NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdated", DbType="DateTime2 NOT NULL")]
+		public System.DateTime LastUpdated
+		{
+			get
+			{
+				return this._LastUpdated;
+			}
+			set
+			{
+				if ((this._LastUpdated != value))
+				{
+					this.OnLastUpdatedChanging(value);
+					this.SendPropertyChanging();
+					this._LastUpdated = value;
+					this.SendPropertyChanged("LastUpdated");
+					this.OnLastUpdatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Task_ProjectTaskResourceLog", Storage="_ProjectTaskResourceLogs", ThisKey="id", OtherKey="TaskId")]
+		public EntitySet<ProjectTaskResourceLog> ProjectTaskResourceLogs
+		{
+			get
+			{
+				return this._ProjectTaskResourceLogs;
+			}
+			set
+			{
+				this._ProjectTaskResourceLogs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Task", Storage="_User", ThisKey="UserCreatedId", OtherKey="id", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Tasks.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Tasks.Add(this);
+						this._UserCreatedId = value.id;
+					}
+					else
+					{
+						this._UserCreatedId = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ProjectTaskResourceLogs(ProjectTaskResourceLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.Task = this;
+		}
+		
+		private void detach_ProjectTaskResourceLogs(ProjectTaskResourceLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.Task = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
 	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2260,7 +2284,7 @@ namespace EclipseCompanionModelLibrary
 		
 		private string _EmailAddress;
 		
-		private string _Password;
+		private string _UserPassword;
 		
 		private int _AccessLevel;
 		
@@ -2294,8 +2318,8 @@ namespace EclipseCompanionModelLibrary
     partial void OnLoginIdChanged();
     partial void OnEmailAddressChanging(string value);
     partial void OnEmailAddressChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
+    partial void OnUserPasswordChanging(string value);
+    partial void OnUserPasswordChanged();
     partial void OnAccessLevelChanging(int value);
     partial void OnAccessLevelChanged();
     partial void OnLastLogInChanging(System.Nullable<System.DateTime> value);
@@ -2419,22 +2443,22 @@ namespace EclipseCompanionModelLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Password
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserPassword", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserPassword
 		{
 			get
 			{
-				return this._Password;
+				return this._UserPassword;
 			}
 			set
 			{
-				if ((this._Password != value))
+				if ((this._UserPassword != value))
 				{
-					this.OnPasswordChanging(value);
+					this.OnUserPasswordChanging(value);
 					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
+					this._UserPassword = value;
+					this.SendPropertyChanged("UserPassword");
+					this.OnUserPasswordChanged();
 				}
 			}
 		}

@@ -174,7 +174,6 @@ namespace EclipseCompanionView
                 UserModel user = new UserModel();
                 PopulateUserModel(ref user);
 
-
                 Linq2SqlProcessor.AddUpdateUser(user, SqlAction.Add, GlobalCode.SHA256Hash(GlobalCode.DefaultPassword));
                 MessageBox.Show($"{user.FirstName} {user.LastName} successfully added.",
                     "User Added",

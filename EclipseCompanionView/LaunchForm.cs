@@ -11,8 +11,25 @@ namespace EclipseCompanionView
     {
         public LaunchForm()
         {
-            // Only required once per application launch
             InitializeComponent();
+            // if this is the first run of the application after install,
+            // populate default user
+            if(Linq2SqlProcessor.GetFirstRunValue())
+            {
+                UserModel user = new UserModel();
+                user.FirstName = "Default";
+                user.LastName = "Admin";
+                user.UserLoginName = "admin";
+                user.EmailAddress = "not used";
+                user.AccessLevel = AccessLevels.Admin;
+                user.IsActive = true;
+                user.IsLocked = false;
+                user.ForcePasswordChange = false;
+                Linq2SqlProcessor.AddUpdateUser(user, SqlAction.Add, GlobalCode.SHA256Hash(GlobalCode.DefaultPassword));
+                Linq2SqlProcessor.SetFirstRunToFalse();
+            }
+
+            // Only required once per application launch
             ApiHelper.InitializeClient();
             GlobalCode.EclipseLogin = new EclipseLoginModel();
             GlobalCode.MainLogin = new MainLoginModel();

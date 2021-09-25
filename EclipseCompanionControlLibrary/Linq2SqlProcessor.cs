@@ -12,7 +12,7 @@ namespace EclipseCompanionControlLibrary
 {
     public class Linq2SqlProcessor
     {
-        public static List<string>GetIndicatorValues()
+        public static List<string> GetIndicatorValues()
         {
             try
             {
@@ -40,6 +40,36 @@ namespace EclipseCompanionControlLibrary
             {
                 GlobalCode.ExceptionHandler(ex);
                 return null;
+            }
+        }
+
+        public static bool GetFirstRunValue()
+        {
+            try
+            {
+                SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
+                GeneralConfiguration config = dbContext.GeneralConfigurations.First();
+                return config.FirstRun;
+            }
+            catch (Exception ex)
+            {
+                GlobalCode.ExceptionHandler(ex);
+                return true;
+            }
+        }
+
+        public static void SetFirstRunToFalse ()
+        {
+            try
+            {
+                SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
+                GeneralConfiguration config = dbContext.GeneralConfigurations.First();
+                config.FirstRun = false;
+                dbContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                GlobalCode.ExceptionHandler(ex);
             }
         }
 
@@ -182,7 +212,7 @@ namespace EclipseCompanionControlLibrary
             {
                 SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
                 User uSql = dbContext.Users.SingleOrDefault(u => u.id == id);
-                return uSql.Password;
+                return uSql.UserPassword;
             }
             catch (Exception ex)
             {
@@ -197,7 +227,7 @@ namespace EclipseCompanionControlLibrary
             {
                 SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
                 User uSql = dbContext.Users.SingleOrDefault(u => u.id == id);
-                uSql.Password = password;
+                uSql.UserPassword = password;
                 uSql.LastUpdated = DateTime.Now;
                 dbContext.SubmitChanges();
             }
@@ -226,7 +256,7 @@ namespace EclipseCompanionControlLibrary
                 if(action == SqlAction.Add)
                 {
                     uSql.CreateDate = DateTime.Now;
-                    uSql.Password = password;
+                    uSql.UserPassword = password;
                     dbContext.Users.InsertOnSubmit(uSql);
                 }
                 dbContext.SubmitChanges();

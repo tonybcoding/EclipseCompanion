@@ -97,6 +97,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[GeneralConfiguration](
 	[id] [int] NOT NULL,
+	[FirstRun] [bit] NOT NULL,
 	[LastAPIRefresh] [datetime2](7) NOT NULL,
 	[LastUpdatedByUserId] [int] NOT NULL,
 	[UpdatingAPI] [bit] NOT NULL,
@@ -223,7 +224,7 @@ CREATE TABLE [dbo].[Users](
 	[LastName] [varchar](100) NOT NULL,
 	[LoginId] [varchar](100) NOT NULL,
 	[EmailAddress] [varchar](200) NOT NULL,
-	[Password] [varchar](50) NOT NULL,
+	[UserPassword] [varchar](50) NOT NULL,
 	[AccessLevel] [int] NOT NULL,
 	[LastLogIn] [datetime2](7) NULL,
 	[Active] [bit] NOT NULL,

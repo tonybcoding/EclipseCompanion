@@ -19,7 +19,8 @@ namespace EclipseCompanionControlLibrary
             try
             {
                 SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
-                var user = dbContext.Users.SingleOrDefault(u => u.LoginId == mainUser && u.Password == mainPassword);
+                var user = dbContext.Users.SingleOrDefault(u => u.LoginId == mainUser && u.UserPassword == mainPassword);
+
                 if (user == null)
                 {
                     MessageBox.Show($"Wrong username or password entered. Please try again.",
