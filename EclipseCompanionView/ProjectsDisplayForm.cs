@@ -408,6 +408,7 @@ namespace EclipseCompanionView
                 closeNoSaveButton.Enabled = false;
                 projectsDataGridView.ColumnHeadersVisible = false;
                 projectsDataGridView.Rows[configToDisplayIndex].Visible = false;
+                projectsDataGridView.Rows[colWidthInPixelsIndex].Visible = false;
                 projectsDataGridView.RowHeadersVisible = false;
                 // hide columns that are not checked for ToDisplay
                 foreach (DataGridViewColumn c in projectsDataGridView.Columns)
@@ -429,6 +430,7 @@ namespace EclipseCompanionView
                 closeNoSaveButton.Enabled = true;
                 projectsDataGridView.ColumnHeadersVisible = true;
                 projectsDataGridView.Rows[configToDisplayIndex].Visible = true;
+                projectsDataGridView.Rows[colWidthInPixelsIndex].Visible = true;
                 projectsDataGridView.RowHeadersVisible = true;
                 projectsDataGridView.FirstDisplayedScrollingRowIndex = projectsDataGridView.SelectedRows[0].Index;
                 // unhide all columns

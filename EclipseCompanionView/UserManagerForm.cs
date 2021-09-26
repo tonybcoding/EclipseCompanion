@@ -140,6 +140,7 @@ namespace EclipseCompanionView
             userDetailGroupBox.Enabled = true;
             addNewUserButton.Enabled = false;
             resetPasswordButton.Enabled = false;
+            usersComboBox.Enabled = false;
             updateUserButton.Hide();
             addUserButton.Show();
             ClearUserDetails();
@@ -160,17 +161,14 @@ namespace EclipseCompanionView
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            if(firstNameValue.Text == "" || lastNameValue.Text == "" || loginIdValue.Text == "" || emailAddressValue.Text == "" || accessLevelComboBox.SelectedIndex < 0)
+            if(firstNameValue.Text == "" || lastNameValue.Text == "" || loginIdValue.Text == "" || 
+                emailAddressValue.Text == "" || accessLevelComboBox.SelectedIndex < 0)
             {
-                MessageBox.Show("First Name, Last Name, User Login ID, Email Address, and Access Level cannot be blank. Please check your entries.",
+                MessageBox.Show("First Name, Last Name, User Login ID, Email Address, and " +
+                    "Access Level cannot be blank. Please check your entries.",
                     "Incomplete Data");
             } else
             {
-                addUserButton.Hide();
-                updateUserButton.Show();
-                resetPasswordButton.Enabled = true;
-                addNewUserButton.Enabled = true;
-
                 UserModel user = new UserModel();
                 PopulateUserModel(ref user);
 
@@ -179,6 +177,12 @@ namespace EclipseCompanionView
                     "User Added",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.None);
+
+                addUserButton.Hide();
+                updateUserButton.Show();
+                resetPasswordButton.Enabled = true;
+                addNewUserButton.Enabled = true;
+                usersComboBox.Enabled = true;
 
                 PopulateUserComboBox();
             }
