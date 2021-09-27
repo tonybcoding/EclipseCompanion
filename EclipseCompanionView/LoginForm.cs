@@ -27,6 +27,7 @@ namespace EclipseCompanionView
                 // Pre-populate email address (Eclipse user name)
                 UserModel user = Linq2SqlProcessor.RetrieveUsers(GlobalCode.MainLogin.Id)[0];
                 userNameValue.Text = user.EmailAddress;
+                this.ActiveControl = passwordValue;
 
             }
             else if (LogInToWhat == LoginTo.Main)
@@ -34,8 +35,8 @@ namespace EclipseCompanionView
                 this.Text = "Log in to Eclipse Companion";
                 eclipseUserNameLabel.Text = "User Name :";
                 eclipsePasswordLabel.Text = "Password :";
+                this.ActiveControl = userNameValue;
             }
-            this.ActiveControl = userNameValue;
         }
 
         private void okButton_Click(object sender, EventArgs e)

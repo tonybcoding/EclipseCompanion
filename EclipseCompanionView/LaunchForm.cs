@@ -109,7 +109,6 @@ namespace EclipseCompanionView
             {
                 if (!Linq2SqlProcessor.GetRefreshStatus())
                 {
-                    Linq2SqlProcessor.ChangeRefreshStatus(true);
                     while (!GlobalCode.EclipseLogin.LoggedIn)
                     {
                         using (LoginForm eclipseLogin = new LoginForm(LoginTo.Eclipse))
@@ -130,6 +129,7 @@ namespace EclipseCompanionView
 
                     if (GlobalCode.EclipseLogin.LoggedIn && !cancelLogin)
                     {
+                        Linq2SqlProcessor.ChangeRefreshStatus(true);
                         RefreshProjectsTableWithAPIsForm refreshProjectsForm = new RefreshProjectsTableWithAPIsForm();
                         refreshProjectsForm.ShowDialog();
                         if (GlobalCode.CallsToApisResults != "")

@@ -211,39 +211,43 @@ namespace EclipseCompanionView
                         }
                     }
 
-                    // Traverse each column, then each item in p.ListOfIndicators and add those as appropriate
-                    List<string> indicatorValues = Linq2SqlProcessor.GetIndicatorValues();
-                    foreach (ColumnModel c in cols)
+                    // If current project is actively being worked,
+                    // traverse each column, then each item in p.ListOfIndicators and add those as appropriate
+                    if (p.StatusTypeId == GlobalCode.ActiveStatusCategory)
                     {
-                        if (p.ListOfStatusIndicators != null)
+                        List<string> indicatorValues = Linq2SqlProcessor.GetIndicatorValues();
+                        foreach (ColumnModel c in cols)
                         {
-                            foreach (ProjectModel.Indicator i in p.ListOfStatusIndicators)
+                            if (p.ListOfStatusIndicators != null)
                             {
-                                if (c.FieldName == i.Name)
+                                foreach (ProjectModel.Indicator i in p.ListOfStatusIndicators)
                                 {
-                                    bool isIndicator = false;
-                                    if (i.StateName != "Not Set")
+                                    if (c.FieldName == i.Name)
                                     {
-                                        Color shading = new Color();
-                                        string newValue = "";
-                                        isIndicator = GlobalCode.ProcessIndicator("Complexity", i, c, indicatorValues, 3, ref shading, ref newValue) ||
-                                            GlobalCode.ProcessIndicator("Schedule", i, c, indicatorValues, 6, ref shading, ref newValue) ||
-                                            GlobalCode.ProcessIndicator("Overall Project Health", i, c, indicatorValues, 9, ref shading, ref newValue);
-                                        if (isIndicator)
+                                        bool isIndicator = false;
+                                        if (i.StateName != "Not Set")
                                         {
-                                            projectsDataGridView.Columns[c.DisplayColumn].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                                            projectsDataGridView.Rows[currentRow].Cells[c.DisplayColumn].Style.BackColor = shading;
-                                            projectsDataGridView.Rows[currentRow].Cells[c.DisplayColumn].Value = newValue;
+                                            Color shading = new Color();
+                                            string newValue = "";
+                                            isIndicator = GlobalCode.ProcessIndicator("Complexity", i, c, indicatorValues, 3, ref shading, ref newValue) ||
+                                                GlobalCode.ProcessIndicator("Schedule", i, c, indicatorValues, 6, ref shading, ref newValue) ||
+                                                GlobalCode.ProcessIndicator("Overall Project Health", i, c, indicatorValues, 9, ref shading, ref newValue);
+                                            if (isIndicator)
+                                            {
+                                                projectsDataGridView.Columns[c.DisplayColumn].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                                projectsDataGridView.Rows[currentRow].Cells[c.DisplayColumn].Style.BackColor = shading;
+                                                projectsDataGridView.Rows[currentRow].Cells[c.DisplayColumn].Value = newValue;
+                                            }
+                                            else
+                                            {
+                                                projectsDataGridView.Rows[currentRow].Cells[c.DisplayColumn].Value = i.StateName;
+                                            }
                                         }
-                                        else
-                                        {
-                                            projectsDataGridView.Rows[currentRow].Cells[c.DisplayColumn].Value = i.StateName;
-                                        }
+                                        break; // can stop looking
                                     }
-                                    break; // can stop looking
                                 }
                             }
-                        }
+                        } 
                     }
 
                     // move to next row

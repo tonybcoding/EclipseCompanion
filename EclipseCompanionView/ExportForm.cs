@@ -122,7 +122,7 @@ namespace EclipseCompanionView
                                 }
 
                                 // if field not found, search through project indicators
-                                if (!fieldFound)
+                                if (!fieldFound && p.StatusTypeId == GlobalCode.ActiveStatusCategory)
                                 {
                                     foreach (ProjectModel.Indicator i in p.ListOfStatusIndicators)
                                     {
