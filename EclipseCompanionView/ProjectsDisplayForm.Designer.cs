@@ -38,14 +38,15 @@ namespace EclipseCompanionView
             this.closeButton = new System.Windows.Forms.Button();
             this.showResultsViewCheckBox = new System.Windows.Forms.CheckBox();
             this.filterPanel = new System.Windows.Forms.Panel();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.projectsDisplayedLabel = new System.Windows.Forms.Label();
             this.filterLabel = new System.Windows.Forms.Label();
             this.closedRadioButton = new System.Windows.Forms.RadioButton();
             this.filterSuspendedRadioButton = new System.Windows.Forms.RadioButton();
             this.filterActiveRadioButton = new System.Windows.Forms.RadioButton();
             this.filterAllRadioButton = new System.Windows.Forms.RadioButton();
-            this.projectsDisplayedLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataGridView)).BeginInit();
             this.filterPanel.SuspendLayout();
             this.SuspendLayout();
@@ -64,14 +65,14 @@ namespace EclipseCompanionView
             this.projectsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.projectsDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.projectsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.projectsDataGridView.Location = new System.Drawing.Point(13, 56);
+            this.projectsDataGridView.Location = new System.Drawing.Point(13, 60);
             this.projectsDataGridView.MultiSelect = false;
             this.projectsDataGridView.Name = "projectsDataGridView";
             this.projectsDataGridView.RowHeadersWidth = 120;
             this.projectsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.projectsDataGridView.RowTemplate.Height = 25;
             this.projectsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.projectsDataGridView.Size = new System.Drawing.Size(1322, 484);
+            this.projectsDataGridView.Size = new System.Drawing.Size(1322, 501);
             this.projectsDataGridView.TabIndex = 0;
             this.projectsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectsDataGridView_CellDoubleClick);
             this.projectsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectsDataGridView_CellEndEdit);
@@ -80,7 +81,7 @@ namespace EclipseCompanionView
             // saveButton
             // 
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.saveButton.Location = new System.Drawing.Point(524, 557);
+            this.saveButton.Location = new System.Drawing.Point(524, 570);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(140, 35);
             this.saveButton.TabIndex = 5;
@@ -91,7 +92,7 @@ namespace EclipseCompanionView
             // closeNoSaveButton
             // 
             this.closeNoSaveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.closeNoSaveButton.Location = new System.Drawing.Point(682, 557);
+            this.closeNoSaveButton.Location = new System.Drawing.Point(682, 570);
             this.closeNoSaveButton.Name = "closeNoSaveButton";
             this.closeNoSaveButton.Size = new System.Drawing.Size(140, 35);
             this.closeNoSaveButton.TabIndex = 6;
@@ -102,7 +103,7 @@ namespace EclipseCompanionView
             // exportButton
             // 
             this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exportButton.Location = new System.Drawing.Point(1146, 557);
+            this.exportButton.Location = new System.Drawing.Point(1146, 570);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(87, 35);
             this.exportButton.TabIndex = 7;
@@ -113,7 +114,7 @@ namespace EclipseCompanionView
             // closeButton
             // 
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Location = new System.Drawing.Point(1248, 557);
+            this.closeButton.Location = new System.Drawing.Point(1248, 570);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(87, 35);
             this.closeButton.TabIndex = 8;
@@ -125,7 +126,7 @@ namespace EclipseCompanionView
             // 
             this.showResultsViewCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.showResultsViewCheckBox.AutoSize = true;
-            this.showResultsViewCheckBox.Location = new System.Drawing.Point(364, 565);
+            this.showResultsViewCheckBox.Location = new System.Drawing.Point(364, 578);
             this.showResultsViewCheckBox.Name = "showResultsViewCheckBox";
             this.showResultsViewCheckBox.Size = new System.Drawing.Size(146, 21);
             this.showResultsViewCheckBox.TabIndex = 9;
@@ -135,44 +136,42 @@ namespace EclipseCompanionView
             // 
             // filterPanel
             // 
-            this.filterPanel.Controls.Add(this.projectsDisplayedLabel);
-            this.filterPanel.Controls.Add(this.searchTextBox);
             this.filterPanel.Controls.Add(this.searchButton);
+            this.filterPanel.Controls.Add(this.searchTextBox);
+            this.filterPanel.Controls.Add(this.label1);
+            this.filterPanel.Controls.Add(this.projectsDisplayedLabel);
             this.filterPanel.Controls.Add(this.filterLabel);
             this.filterPanel.Controls.Add(this.closedRadioButton);
             this.filterPanel.Controls.Add(this.filterSuspendedRadioButton);
             this.filterPanel.Controls.Add(this.filterActiveRadioButton);
             this.filterPanel.Controls.Add(this.filterAllRadioButton);
-            this.filterPanel.Location = new System.Drawing.Point(13, 13);
+            this.filterPanel.Location = new System.Drawing.Point(13, 6);
             this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Size = new System.Drawing.Size(1014, 37);
+            this.filterPanel.Size = new System.Drawing.Size(1322, 48);
             this.filterPanel.TabIndex = 10;
             // 
-            // searchTextBox
+            // label1
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(493, 7);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(197, 25);
-            this.searchTextBox.TabIndex = 12;
-            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
-            this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTextBox_KeyDown);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(389, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "~ or ~";
             // 
-            // searchButton
+            // projectsDisplayedLabel
             // 
-            this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.searchButton.Enabled = false;
-            this.searchButton.Location = new System.Drawing.Point(412, 6);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(70, 27);
-            this.searchButton.TabIndex = 12;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.projectsDisplayedLabel.AutoSize = true;
+            this.projectsDisplayedLabel.Location = new System.Drawing.Point(688, 17);
+            this.projectsDisplayedLabel.Name = "projectsDisplayedLabel";
+            this.projectsDisplayedLabel.Size = new System.Drawing.Size(11, 17);
+            this.projectsDisplayedLabel.TabIndex = 13;
+            this.projectsDisplayedLabel.Text = ":";
             // 
             // filterLabel
             // 
             this.filterLabel.AutoSize = true;
-            this.filterLabel.Location = new System.Drawing.Point(14, 11);
+            this.filterLabel.Location = new System.Drawing.Point(14, 17);
             this.filterLabel.Name = "filterLabel";
             this.filterLabel.Size = new System.Drawing.Size(61, 17);
             this.filterLabel.TabIndex = 4;
@@ -181,7 +180,7 @@ namespace EclipseCompanionView
             // closedRadioButton
             // 
             this.closedRadioButton.AutoSize = true;
-            this.closedRadioButton.Location = new System.Drawing.Point(316, 9);
+            this.closedRadioButton.Location = new System.Drawing.Point(316, 15);
             this.closedRadioButton.Name = "closedRadioButton";
             this.closedRadioButton.Size = new System.Drawing.Size(66, 21);
             this.closedRadioButton.TabIndex = 3;
@@ -192,7 +191,7 @@ namespace EclipseCompanionView
             // filterSuspendedRadioButton
             // 
             this.filterSuspendedRadioButton.AutoSize = true;
-            this.filterSuspendedRadioButton.Location = new System.Drawing.Point(211, 9);
+            this.filterSuspendedRadioButton.Location = new System.Drawing.Point(211, 15);
             this.filterSuspendedRadioButton.Name = "filterSuspendedRadioButton";
             this.filterSuspendedRadioButton.Size = new System.Drawing.Size(91, 21);
             this.filterSuspendedRadioButton.TabIndex = 2;
@@ -203,7 +202,7 @@ namespace EclipseCompanionView
             // filterActiveRadioButton
             // 
             this.filterActiveRadioButton.AutoSize = true;
-            this.filterActiveRadioButton.Location = new System.Drawing.Point(137, 9);
+            this.filterActiveRadioButton.Location = new System.Drawing.Point(137, 15);
             this.filterActiveRadioButton.Name = "filterActiveRadioButton";
             this.filterActiveRadioButton.Size = new System.Drawing.Size(60, 21);
             this.filterActiveRadioButton.TabIndex = 1;
@@ -214,7 +213,7 @@ namespace EclipseCompanionView
             // filterAllRadioButton
             // 
             this.filterAllRadioButton.AutoSize = true;
-            this.filterAllRadioButton.Location = new System.Drawing.Point(83, 9);
+            this.filterAllRadioButton.Location = new System.Drawing.Point(83, 15);
             this.filterAllRadioButton.Name = "filterAllRadioButton";
             this.filterAllRadioButton.Size = new System.Drawing.Size(40, 21);
             this.filterAllRadioButton.TabIndex = 0;
@@ -222,13 +221,25 @@ namespace EclipseCompanionView
             this.filterAllRadioButton.Text = "All";
             this.filterAllRadioButton.UseVisualStyleBackColor = true;
             // 
-            // projectsDisplayedLabel
+            // searchButton
             // 
-            this.projectsDisplayedLabel.AutoSize = true;
-            this.projectsDisplayedLabel.Location = new System.Drawing.Point(718, 11);
-            this.projectsDisplayedLabel.Name = "projectsDisplayedLabel";
-            this.projectsDisplayedLabel.Size = new System.Drawing.Size(0, 17);
-            this.projectsDisplayedLabel.TabIndex = 13;
+            this.searchButton.Enabled = false;
+            this.searchButton.Location = new System.Drawing.Point(447, 12);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(70, 27);
+            this.searchButton.TabIndex = 17;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(524, 13);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(149, 25);
+            this.searchTextBox.TabIndex = 18;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTextBox_KeyDown);
             // 
             // ProjectsDisplayForm
             // 
@@ -273,8 +284,9 @@ namespace EclipseCompanionView
         private System.Windows.Forms.RadioButton filterSuspendedRadioButton;
         private System.Windows.Forms.RadioButton filterActiveRadioButton;
         private System.Windows.Forms.RadioButton filterAllRadioButton;
+        private System.Windows.Forms.Label projectsDisplayedLabel;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox searchTextBox;
-        private System.Windows.Forms.Label projectsDisplayedLabel;
     }
 }

@@ -24,8 +24,9 @@ namespace EclipseCompanionView
                 eclipseUserNameLabel.Text = "Eclipse Email :";
                 eclipsePasswordLabel.Text = "Eclipse Password :";
 
-                // TODO: look up GlobalCode.MainUsers Id to get email address and
-                // pre-populate userNameValue
+                // Pre-populate email address (Eclipse user name)
+                UserModel user = Linq2SqlProcessor.RetrieveUsers(GlobalCode.MainLogin.Id)[0];
+                userNameValue.Text = user.EmailAddress;
 
             }
             else if (LogInToWhat == LoginTo.Main)

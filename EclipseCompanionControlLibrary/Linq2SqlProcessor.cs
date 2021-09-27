@@ -266,17 +266,19 @@ namespace EclipseCompanionControlLibrary
                 GlobalCode.ExceptionHandler(ex);
             }
         }
-        
-        public static List<UserModel> RetrieveUsers()
+
+        public static List<UserModel> RetrieveUsers(int id = -1)
         {
             try
             {
                 SQLDataClassesDataContext dbContext = new SQLDataClassesDataContext(GlobalCode.ConnectionString);
                 List<UserModel> users = new List<UserModel>();
 
-                // load all users from SQL
-                var userList = dbContext.Users.OrderBy(u => u.LastName).ThenBy(u => u.FirstName).ToList();
-                foreach(User user in userList)
+                // load all users from SQL if id is -1 (default, optional)
+                var userList = (id == -1) ? dbContext.Users.OrderBy(u => u.LastName).ThenBy(u => u.FirstName).ToList() :
+                    dbContext.Users.Where(u => u.id == id).ToList();
+
+                foreach (User user in userList)
                 {
                     UserModel u = new UserModel();
                     u.Id = user.id;
@@ -598,7 +600,8 @@ namespace EclipseCompanionControlLibrary
                                 p => Convert.ToString(p.EclipseId).ToLower().Contains(sString) ||
                                 p.Name.ToLower().Contains(sString) ||
                                 p.ProjectOwner.ToLower().Contains(sString) ||
-                                p.Description.ToLower().Contains(sString)).ToList();
+                                p.Description.ToLower().Contains(sString) ||
+                                p.FullStatusNotes.ToLower().Contains(sString)).ToList();
                             break;
                     }
                     foreach (Project p in sqlProjects)

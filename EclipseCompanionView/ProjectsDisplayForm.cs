@@ -45,7 +45,6 @@ namespace EclipseCompanionView
                 List<ColumnModel> cols = Linq2SqlProcessor.GetColumnConfigs();
                 BuildGridHeaders(ref cols, this.inConfig);
                 AddProjectDataToGrid(cols);
-
             }
             else
             {
@@ -102,6 +101,7 @@ namespace EclipseCompanionView
 
         private void BeginFilterSearchingProjects()
         {
+            searchTextBox.Text = "";
             projectsDataGridView.Rows.Clear();
             projectsDataGridView.Refresh();
 
